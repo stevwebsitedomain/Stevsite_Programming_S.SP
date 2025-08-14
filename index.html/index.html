@@ -3,91 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stevsite Programming</title>
+    <title>Stevsite Programming | Web Development Solutions</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
     
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-color: #2563eb;
-            --secondary-color: #1e40af;
-            --accent-color: #3b82f6;
-            --light-color: #f8fafc;
-            --dark-color: #0f172a;
-            --text-color: #334155;
-            --gray-light: #e2e8f0;
-            --transition: all 0.3s ease;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #6c757d;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --accent: #8b5cf6;
+            --success: #10b981;
         }
         
         body {
-            font-family: 'Open Sans', sans-serif;
-            color: var(--text-color);
-            background-color: var(--light-color);
-            line-height: 1.6;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
             overflow-x: hidden;
         }
         
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            color: var(--dark-color);
-            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
         }
         
         .navbar {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 15px 0;
-            transition: var(--transition);
+            transition: all 0.3s ease;
         }
         
         .navbar-brand {
             font-weight: 700;
-            color: var(--primary-color);
+            color: var(--primary);
             display: flex;
             align-items: center;
-            gap: 10px;
         }
         
         .navbar-brand i {
+            margin-right: 10px;
             font-size: 1.8rem;
         }
         
-        .navbar-nav .nav-link {
+        .nav-link {
             font-weight: 500;
-            color: var(--dark-color);
-            padding: 8px 15px;
-            border-radius: 4px;
-            transition: var(--transition);
+            margin: 0 10px;
+            position: relative;
         }
         
-        .navbar-nav .nav-link:hover {
-            color: var(--primary-color);
-            background: rgba(37, 99, 235, 0.1);
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s;
         }
         
-        .hero-section {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        .nav-link:hover:after,
+        .nav-link.active:after {
+            width: 100%;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0ea5e9 100%);
             color: white;
             padding: 120px 0 80px;
             position: relative;
             overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,128L48,117.3C96,107,192,85,288,96C384,107,480,149,576,154.7C672,160,768,128,864,106.7C960,85,1056,75,1152,85.3C1248,96,1344,128,1392,144L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center bottom;
         }
         
         .hero-content {
@@ -95,48 +103,47 @@
             z-index: 2;
         }
         
-        .hero-title {
+        .hero h1 {
             font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
+            font-weight: 700;
+            margin-bottom: 20px;
         }
         
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin-bottom: 30px;
             opacity: 0.9;
         }
         
         .btn-primary {
-            background: var(--primary-color);
-            border: none;
-            padding: 12px 28px;
-            font-weight: 600;
-            border-radius: 6px;
-            transition: var(--transition);
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s;
         }
         
         .btn-primary:hover {
-            background: var(--secondary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
         }
         
         .btn-outline-light {
-            border: 2px solid white;
-            color: white;
-            background: transparent;
-            padding: 10px 26px;
-            font-weight: 600;
-            border-radius: 6px;
-            transition: var(--transition);
+            padding: 12px 30px;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s;
         }
         
         .btn-outline-light:hover {
-            background: white;
-            color: var(--primary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
         }
         
         .section {
@@ -144,82 +151,115 @@
         }
         
         .section-title {
-            position: relative;
-            margin-bottom: 50px;
             text-align: center;
+            margin-bottom: 60px;
         }
         
-        .section-title:after {
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .section-title h2:after {
             content: '';
             position: absolute;
             width: 80px;
             height: 4px;
-            background: var(--primary-color);
-            bottom: -15px;
+            background: var(--accent);
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
             border-radius: 2px;
         }
         
-        .section-subtitle {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 50px;
-            color: var(--text-color);
+        .section-title p {
+            color: var(--secondary);
             font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
         }
         
-        .card {
-            border: none;
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.1);
+        }
+        
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .tech-card {
             border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: var(--transition);
-            height: 100%;
+            transition: all 0.3s ease;
             background: white;
+            height: 100%;
         }
         
-        .card:hover {
+        .tech-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.15);
         }
         
-        .card-img-top {
+        .tech-card-img {
             height: 200px;
-            object-fit: cover;
-        }
-        
-        .card-body {
-            padding: 25px;
-        }
-        
-        .card-title {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--dark-color);
-        }
-        
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: rgba(37, 99, 235, 0.1);
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 25px;
-            color: var(--primary-color);
-            font-size: 1.8rem;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
         }
         
-        .highlight {
-            background: #f8fafc;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            border-left: 4px solid var(--primary-color);
-            font-family: 'Courier New', monospace;
-            overflow-x: auto;
+        .tech-card-img i {
+            font-size: 5rem;
+            color: var(--primary);
+        }
+        
+        .tech-card-body {
+            padding: 25px;
+        }
+        
+        .tech-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .install-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .install-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%232563eb" fill-opacity="0.05" d="M0,224L48,213.3C96,203,192,181,288,160C384,139,480,117,576,122.7C672,128,768,160,864,170.7C960,181,1056,171,1152,149.3C1248,128,1344,96,1392,80L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center bottom;
         }
         
         .code-block {
@@ -227,119 +267,176 @@
             color: #f8fafc;
             border-radius: 8px;
             padding: 20px;
-            margin: 20px 0;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.95rem;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .code-block pre {
+            margin: 0;
             overflow-x: auto;
         }
         
-        .code-comment {
+        .code-block .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
             color: #94a3b8;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s;
         }
         
-        .code-tag {
-            color: #f87171;
+        .code-block .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
         }
         
-        .code-attr {
-            color: #60a5fa;
-        }
-        
-        .code-value {
-            color: #34d399;
-        }
-        
-        .tech-card {
-            text-align: center;
-            padding: 40px 20px;
-            border-radius: 12px;
+        .testimonial-card {
             background: white;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: var(--transition);
-        }
-        
-        .tech-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-        }
-        
-        .tech-icon {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-        
-        .tech-name {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .footer {
-            background: var(--dark-color);
-            color: white;
-            padding: 70px 0 0;
-        }
-        
-        .footer-title {
-            color: white;
-            font-size: 1.4rem;
-            margin-bottom: 25px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            height: 100%;
             position: relative;
         }
         
-        .footer-title:after {
-            content: '';
+        .testimonial-card:after {
+            content: '"';
             position: absolute;
-            width: 50px;
-            height: 3px;
-            background: var(--primary-color);
-            bottom: -10px;
-            left: 0;
-            border-radius: 2px;
+            top: 20px;
+            right: 30px;
+            font-size: 5rem;
+            color: rgba(37, 99, 235, 0.1);
+            font-family: serif;
+            line-height: 1;
         }
         
-        .footer-links a {
-            color: #cbd5e1;
-            display: block;
-            margin-bottom: 12px;
-            text-decoration: none;
-            transition: var(--transition);
+        .testimonial-card .rating {
+            color: #f59e0b;
+            margin-bottom: 15px;
         }
         
-        .footer-links a:hover {
-            color: white;
-            transform: translateX(5px);
-        }
-        
-        .social-icons {
+        .testimonial-card .client {
             display: flex;
-            gap: 15px;
+            align-items: center;
             margin-top: 20px;
         }
         
-        .social-icons a {
-            width: 40px;
-            height: 40px;
+        .testimonial-card .client-img {
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            transition: var(--transition);
+            font-weight: bold;
+            margin-right: 15px;
         }
         
-        .social-icons a:hover {
-            background: var(--primary-color);
-            transform: translateY(-5px);
+        .contact-section {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0ea5e9 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,128L48,117.3C96,107,192,85,288,96C384,107,480,149,576,154.7C672,160,768,128,864,106.7C960,85,1056,75,1152,85.3C1248,96,1344,128,1392,144L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            background-position: center bottom;
+        }
+        
+        .contact-form .form-control {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-form .form-control:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: white;
+            box-shadow: none;
+            color: white;
+        }
+        
+        .contact-form .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 70px 0 30px;
+        }
+        
+        .footer h5 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+        }
+        
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .footer ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
         }
         
         .copyright {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
             margin-top: 50px;
             text-align: center;
             color: #94a3b8;
+            font-size: 0.9rem;
         }
         
         .back-to-top {
@@ -348,51 +445,53 @@
             right: 30px;
             width: 50px;
             height: 50px;
-            border-radius: 50%;
-            background: var(--primary-color);
+            background: var(--primary);
             color: white;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
             text-decoration: none;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            font-size: 1.2rem;
             z-index: 1000;
             opacity: 0;
-            transition: var(--transition);
+            visibility: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
         }
         
         .back-to-top.show {
             opacity: 1;
+            visibility: visible;
         }
         
         .back-to-top:hover {
-            background: var(--secondary-color);
-            transform: translateY(-5px);
+            background: var(--primary-dark);
+            transform: translateY(-3px);
         }
         
         @media (max-width: 768px) {
-            .hero-title {
+            .hero h1 {
                 font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
             }
             
             .section {
                 padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <i class="fas fa-laptop-code"></i>
-                STEVSITE PROGRAMMING
+                Stevsite Programming
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -400,167 +499,104 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
+                        <a class="nav-link active" href="#">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#features">Features</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#tech">Technologies</a>
+                        <a class="nav-link" href="#technologies">Technologies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#installation">Installation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Testimonials</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
                     </li>
                 </ul>
+                <div class="ms-3">
+                    <a href="#contact" class="btn btn-outline-primary">Get Started</a>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-section" id="home">
+    <section class="hero">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 hero-content">
-                    <h1 class="hero-title">Learn to Code with Professional Guidance</h1>
-                    <p class="hero-subtitle">Master Bootstrap, JavaScript, HTML and modern web development techniques with our comprehensive learning resources.</p>
+                    <h1>Transform Your Digital Presence</h1>
+                    <p>Professional web development solutions using cutting-edge technologies like Bootstrap, JavaScript, and HTML5. We help businesses create stunning, responsive websites.</p>
                     <div class="d-flex gap-3">
-                        <a href="#about" class="btn btn-primary">Get Started</a>
-                        <a href="#tech" class="btn btn-outline-light">Explore Technologies</a>
+                        <a href="#contact" class="btn btn-light">Get Started</a>
+                        <a href="#features" class="btn btn-outline-light">Learn More</a>
                     </div>
                 </div>
-                <div class="col-lg-6 text-center">
-                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Coding" class="img-fluid rounded-3 shadow-lg">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="section bg-light" id="about">
-        <div class="container">
-            <h2 class="section-title">About Stevsite Programming</h2>
-            <p class="section-subtitle">We provide high-quality learning resources and web development services to help you succeed in the digital world.</p>
-            
-            <div class="row">
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">Our Mission</h3>
-                            <p>My name is Steven Makarious. I am a software developer who develops and hosts websites. Welcome to my company, Stevsite Programming, where you can learn various programming languages. Keep exploring and learning on my website.</p>
-                            <p>We help various people design their websites and make them look great. Our mission is to:</p>
-                            <ul class="mb-4">
-                                <li>Explain experiences and different techniques about websites</li>
-                                <li>Teach how to create websites through different languages</li>
-                                <li>Show how to host websites and which applications to use</li>
-                            </ul>
-                            <div class="d-flex gap-3">
-                                <a href="#contact" class="btn btn-primary">Contact Us</a>
-                                <a href="#tech" class="btn btn-outline-primary">Learn More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <h3 class="card-title">Why Choose Us</h3>
-                            <div class="d-flex align-items-start mb-4">
-                                <div class="feature-icon me-4">
-                                    <i class="fas fa-graduation-cap"></i>
-                                </div>
-                                <div>
-                                    <h4>Expert Guidance</h4>
-                                    <p>Learn from experienced developers who are passionate about teaching and sharing knowledge.</p>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-start mb-4">
-                                <div class="feature-icon me-4">
-                                    <i class="fas fa-code"></i>
-                                </div>
-                                <div>
-                                    <h4>Hands-on Learning</h4>
-                                    <p>Practical projects and real-world examples to help you apply what you learn.</p>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-start">
-                                <div class="feature-icon me-4">
-                                    <i class="fas fa-users"></i>
-                                </div>
-                                <div>
-                                    <h4>Community Support</h4>
-                                    <p>Join our community of learners to share ideas and get help when you need it.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-lg-6 d-none d-lg-block text-center">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 600'><rect width='800' height='600' fill='%230ea5e9'/><circle cx='400' cy='300' r='180' fill='%232563eb'/><text x='400' y='320' font-family='Arial' font-size='80' fill='white' text-anchor='middle'>💻</text></svg>" alt="Web Development" class="img-fluid" width="500">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="section" id="features">
+    <section id="features" class="section">
         <div class="container">
-            <h2 class="section-title">Key Features</h2>
-            <p class="section-subtitle">Explore our comprehensive learning resources and development tools</p>
+            <div class="section-title">
+                <h2>Why Choose Us</h2>
+                <p>We deliver cutting-edge web solutions that help businesses grow and succeed in the digital world.</p>
+            </div>
             
             <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <div class="feature-icon mx-auto">
-                                <i class="fas fa-box"></i>
-                            </div>
-                            <h3 class="card-title">Install via Package Manager</h3>
-                            <p>Install Bootstrap's source Sass and JavaScript files via npm, RubyGems, Composer, or Meteor.</p>
-                            <div class="highlight">
-                                <code>npm install bootstrap@5.3.3</code>
-                            </div>
-                            <div class="highlight">
-                                <code>gem install bootstrap -v 5.3.3</code>
-                            </div>
-                            <a href="#" class="btn btn-outline-primary mt-2">Read Documentation</a>
-                        </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <i class="fas fa-rocket"></i>
+                        <h3>Fast Development</h3>
+                        <p>Our streamlined processes and expertise in modern frameworks ensure your project is delivered on time without compromising quality.</p>
                     </div>
                 </div>
                 
-                <div class="col-md-4">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <div class="feature-icon mx-auto">
-                                <i class="fas fa-globe"></i>
-                            </div>
-                            <h3 class="card-title">Include via CDN</h3>
-                            <p>Quickly add Bootstrap to your project using our CDN links with no installation required.</p>
-                            <div class="code-block">
-                                <span class="code-tag">&lt;link</span> <span class="code-attr">href</span>=<span class="code-value">"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"</span> <span class="code-attr">rel</span>=<span class="code-value">"stylesheet"</span><span class="code-tag">&gt;</span><br>
-                                <span class="code-tag">&lt;script</span> <span class="code-attr">src</span>=<span class="code-value">"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"</span><span class="code-tag">&gt;&lt;/script&gt;</span>
-                            </div>
-                            <a href="#" class="btn btn-outline-primary mt-2">Quick Start Guide</a>
-                        </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Fully Responsive</h3>
+                        <p>All our websites are designed to look and function perfectly on any device, from desktops to smartphones.</p>
                     </div>
                 </div>
                 
-                <div class="col-md-4">
-                    <div class="card h-100">
-                        <div class="card-body text-center">
-                            <div class="feature-icon mx-auto">
-                                <i class="fas fa-file-code"></i>
-                            </div>
-                            <h3 class="card-title">CSS Variables</h3>
-                            <p>Build and extend in real-time with CSS variables for global theme styles and components.</p>
-                            <div class="code-block">
-                                <span class="code-comment">// Using CSS variables</span><br>
-                                <span class="code-tag">.component</span> {<br>
-                                &nbsp;&nbsp;<span class="code-attr">color</span>: <span class="code-tag">var</span>(--bs-gray-800);<br>
-                                &nbsp;&nbsp;<span class="code-attr">background-color</span>: <span class="code-tag">var</span>(--bs-gray-100);<br>
-                                }
-                            </div>
-                            <a href="#" class="btn btn-outline-primary mt-2">Learn More</a>
-                        </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <i class="fas fa-lock"></i>
+                        <h3>Secure Solutions</h3>
+                        <p>Security is our priority. We implement best practices to protect your website and user data from vulnerabilities.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <i class="fas fa-sync-alt"></i>
+                        <h3>Continuous Updates</h3>
+                        <p>We provide ongoing support and updates to keep your website current with the latest technologies and trends.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>SEO Optimized</h3>
+                        <p>Our websites are built with SEO best practices to help you rank higher in search engine results.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <i class="fas fa-headset"></i>
+                        <h3>Dedicated Support</h3>
+                        <p>Our team is always ready to assist you with any questions or issues you may have with your website.</p>
                     </div>
                 </div>
             </div>
@@ -568,51 +604,166 @@
     </section>
 
     <!-- Technologies Section -->
-    <section class="section bg-light" id="tech">
+    <section id="technologies" class="section bg-light">
         <div class="container">
-            <h2 class="section-title">Technologies We Teach</h2>
-            <p class="section-subtitle">Master the essential web development technologies with our comprehensive resources</p>
+            <div class="section-title">
+                <h2>Our Technologies</h2>
+                <p>We specialize in the latest web technologies to build powerful, efficient, and beautiful websites.</p>
+            </div>
             
             <div class="row g-4">
                 <div class="col-md-4">
                     <div class="tech-card">
-                        <div class="tech-icon">
+                        <div class="tech-card-img">
                             <i class="fab fa-bootstrap"></i>
                         </div>
-                        <h3 class="tech-name">Bootstrap 5</h3>
-                        <p>Powerful, extensible, and feature-packed frontend toolkit for building responsive websites.</p>
-                        <div class="highlight">
-                            <code>npm install bootstrap@5.3.3</code>
+                        <div class="tech-card-body">
+                            <h3>Bootstrap 5</h3>
+                            <p>Build responsive, mobile-first projects on the web with the world's most popular front-end component library.</p>
+                            <a href="#" class="btn btn-outline-primary mt-3">Learn More</a>
                         </div>
-                        <a href="#" class="btn btn-primary mt-3">Learn Bootstrap</a>
                     </div>
                 </div>
                 
                 <div class="col-md-4">
                     <div class="tech-card">
-                        <div class="tech-icon">
+                        <div class="tech-card-img">
                             <i class="fab fa-js"></i>
                         </div>
-                        <h3 class="tech-name">JavaScript</h3>
-                        <p>High-level programming language that enables interactive web pages and applications.</p>
-                        <div class="highlight">
-                            <code>function greet() { console.log("Hello World!"); }</code>
+                        <div class="tech-card-body">
+                            <h3>JavaScript</h3>
+                            <p>Create dynamic and interactive web experiences with the programming language of the web.</p>
+                            <a href="#" class="btn btn-outline-primary mt-3">Learn More</a>
                         </div>
-                        <a href="#" class="btn btn-primary mt-3">Learn JavaScript</a>
                     </div>
                 </div>
                 
                 <div class="col-md-4">
                     <div class="tech-card">
-                        <div class="tech-icon">
+                        <div class="tech-card-img">
                             <i class="fab fa-html5"></i>
                         </div>
-                        <h3 class="tech-name">HTML5</h3>
-                        <p>The standard markup language for documents designed to be displayed in a web browser.</p>
-                        <div class="highlight">
-                            <code>&lt;h1&gt;Hello World!&lt;/h1&gt;</code>
+                        <div class="tech-card-body">
+                            <h3>HTML5 & CSS3</h3>
+                            <p>The latest standards for structuring and presenting content on the World Wide Web.</p>
+                            <a href="#" class="btn btn-outline-primary mt-3">Learn More</a>
                         </div>
-                        <a href="#" class="btn btn-primary mt-3">Learn HTML5</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Section -->
+    <section id="installation" class="section install-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Quick Installation</h2>
+                <p>Get started with our technologies using these simple installation methods.</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <h3>Via Package Manager</h3>
+                    <p>Install via npm, yarn, or other package managers for seamless integration into your project.</p>
+                    
+                    <div class="code-block mt-4">
+                        <button class="copy-btn">Copy</button>
+                        <pre>npm install bootstrap@5.3.0</pre>
+                    </div>
+                    
+                    <div class="code-block mt-3">
+                        <button class="copy-btn">Copy</button>
+                        <pre>yarn add bootstrap</pre>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <h3>Via CDN</h3>
+                    <p>Quickly add to your project using our content delivery network links.</p>
+                    
+                    <div class="code-block mt-4">
+                        <button class="copy-btn">Copy</button>
+                        <pre>&lt;!-- Bootstrap CSS --&gt;
+&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"&gt;</pre>
+                    </div>
+                    
+                    <div class="code-block mt-3">
+                        <button class="copy-btn">Copy</button>
+                        <pre>&lt;!-- Bootstrap JS --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Testimonials</h2>
+                <p>Hear what our satisfied clients have to say about our services.</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Stevsite Programming transformed our outdated website into a modern, responsive platform. Their attention to detail and technical expertise exceeded our expectations."</p>
+                        <div class="client">
+                            <div class="client-img">MJ</div>
+                            <div>
+                                <strong>Michael Johnson</strong>
+                                <p>CEO, TechSolutions Inc.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p>"The team at Stevsite delivered our e-commerce platform ahead of schedule. Their knowledge of Bootstrap and JavaScript implementation was impressive."</p>
+                        <div class="client">
+                            <div class="client-img">SD</div>
+                            <div>
+                                <strong>Sarah Davis</strong>
+                                <p>Marketing Director, RetailPro</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Working with Steven was a game-changer for our business. The website they built for us has significantly increased our online conversions and customer engagement."</p>
+                        <div class="client">
+                            <div class="client-img">RW</div>
+                            <div>
+                                <strong>Robert Wilson</strong>
+                                <p>Founder, InnovateStartup</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -620,54 +771,63 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="section" id="contact">
+    <section id="contact" class="section contact-section">
         <div class="container">
-            <h2 class="section-title">Contact Us</h2>
-            <p class="section-subtitle">Have questions? Reach out to us for more information</p>
+            <div class="section-title">
+                <h2 class="text-white">Contact Us</h2>
+                <p class="text-white">Have a project in mind? Get in touch with us today for a free consultation.</p>
+            </div>
             
             <div class="row">
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h3 class="card-title">Get in Touch</h3>
-                            <form>
-                                <div class="mb-3">
-                                    <label for="name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
+                <div class="col-lg-6">
+                    <div class="contact-form">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="message" class="form-label">Message</label>
-                                    <textarea class="form-control" id="message" rows="4" placeholder="Your Message"></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Send Message</button>
-                            </form>
-                        </div>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Subject">
+                            <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                            <button type="submit" class="btn btn-light w-100">Send Message</button>
+                        </form>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h3 class="card-title">Contact Information</h3>
-                            <ul class="list-unstyled">
-                                <li class="mb-3">
-                                    <h5><i class="fas fa-user me-2"></i> Steven Ladislaus Makarious</h5>
-                                </li>
-                                <li class="mb-3">
-                                    <h5><i class="fas fa-map-marker-alt me-2"></i> P.O Box 520, Mtwara, Tanzania</h5>
-                                </li>
-                                <li class="mb-3">
-                                    <h5><i class="fas fa-phone me-2"></i> +255 715 296 092</h5>
-                                </li>
-                                <li class="mb-3">
-                                    <h5><i class="fas fa-envelope me-2"></i> stevenabalwambo@gmail.com</h5>
-                                </li>
-                            </ul>
-                            <div class="mt-4">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d687.0022297312414!2d40.174775692539306!3d-10.28235222177917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x188d4533a7ebbc81%3A0x8748bb1bfa05214f!2sLigula%20Hospital!5e1!3m2!1sen!2stz!4v1722445508456!5m2!1sen!2stz" width="100%" height="250" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
+                
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <div class="ps-lg-5">
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="fas fa-map-marker-alt fa-2x me-4 mt-2"></i>
+                            <div>
+                                <h4>Our Location</h4>
+                                <p>123 Tech Street, Digital City<br>Mtwara, Tanzania</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="fas fa-phone-alt fa-2x me-4 mt-2"></i>
+                            <div>
+                                <h4>Call Us</h4>
+                                <p>+255 715 296 092<br>+255 123 456 789</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start mb-4">
+                            <i class="fas fa-envelope fa-2x me-4 mt-2"></i>
+                            <div>
+                                <h4>Email Us</h4>
+                                <p>info@stevsite.com<br>support@stevsite.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start">
+                            <i class="fas fa-clock fa-2x me-4 mt-2"></i>
+                            <div>
+                                <h4>Working Hours</h4>
+                                <p>Monday - Friday: 9AM - 6PM<br>Saturday: 10AM - 2PM</p>
                             </div>
                         </div>
                     </div>
@@ -679,11 +839,11 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-4">
-                    <h3 class="footer-title">Stevsite Programming</h3>
-                    <p>Providing high-quality web development resources and training since 2023. Helping developers around the world build better websites.</p>
-                    <div class="social-icons">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <h5>Stevsite Programming</h5>
+                    <p class="mb-4">Professional web development solutions using cutting-edge technologies to help businesses thrive in the digital world.</p>
+                    <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -692,33 +852,33 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-2 col-md-6">
-                    <h3 class="footer-title">Quick Links</h3>
-                    <div class="footer-links">
-                        <a href="#home">Home</a>
-                        <a href="#about">About Us</a>
-                        <a href="#features">Features</a>
-                        <a href="#tech">Technologies</a>
-                        <a href="#contact">Contact</a>
-                    </div>
+                <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#technologies">Technologies</a></li>
+                        <li><a href="#installation">Installation</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                    </ul>
                 </div>
                 
-                <div class="col-lg-3 col-md-6">
-                    <h3 class="footer-title">Technologies</h3>
-                    <div class="footer-links">
-                        <a href="#">Bootstrap 5</a>
-                        <a href="#">JavaScript</a>
-                        <a href="#">HTML5 & CSS3</a>
-                        <a href="#">React.js</a>
-                        <a href="#">Node.js</a>
-                    </div>
+                <div class="col-lg-2 col-md-4 mb-5 mb-md-0">
+                    <h5>Services</h5>
+                    <ul>
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">UI/UX Design</a></li>
+                        <li><a href="#">Responsive Design</a></li>
+                        <li><a href="#">SEO Optimization</a></li>
+                        <li><a href="#">Maintenance</a></li>
+                    </ul>
                 </div>
                 
-                <div class="col-lg-3">
-                    <h3 class="footer-title">Newsletter</h3>
-                    <p>Subscribe to our newsletter for the latest updates and resources.</p>
+                <div class="col-lg-4 col-md-4">
+                    <h5>Newsletter</h5>
+                    <p class="mb-4">Subscribe to our newsletter for the latest updates and offers.</p>
                     <form>
-                        <div class="input-group mb-3">
+                        <div class="input-group">
                             <input type="email" class="form-control" placeholder="Your Email">
                             <button class="btn btn-primary" type="submit">Subscribe</button>
                         </div>
@@ -727,16 +887,19 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Stevsite Programming. All Rights Reserved.</p>
+                <p>&copy; 2023 Stevsite Programming. All Rights Reserved. Designed by Steven Makarious</p>
             </div>
         </div>
     </footer>
 
-    <!-- Back to top button -->
+    <!-- Back to Top Button -->
     <a href="#" class="back-to-top">
         <i class="fas fa-arrow-up"></i>
     </a>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script>
         // Back to top button
         const backToTopButton = document.querySelector('.back-to-top');
@@ -747,6 +910,38 @@
             } else {
                 backToTopButton.classList.remove('show');
             }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Copy code functionality
+        document.querySelectorAll('.copy-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const codeBlock = this.parentElement;
+                const code = codeBlock.querySelector('pre').textContent;
+                
+                navigator.clipboard.writeText(code).then(() => {
+                    const originalText = this.textContent;
+                    this.textContent = 'Copied!';
+                    
+                    setTimeout(() => {
+                        this.textContent = originalText;
+                    }, 2000);
+                });
+            });
         });
         
         // Smooth scrolling for anchor links
@@ -762,16 +957,6 @@
                     });
                 }
             });
-        });
-        
-        // Navbar background change on scroll
-        window.addEventListener('scroll', () => {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('navbar-scrolled');
-            } else {
-                navbar.classList.remove('navbar-scrolled');
-            }
         });
     </script>
 </body>
