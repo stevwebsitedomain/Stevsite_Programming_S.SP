@@ -1,160 +1,397 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stevsite Programming</title>
-    <link rel="icon" href="favicon2.webp">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>">
     
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --light-bg: #f8f9fa;
-            --dark-text: #2c3e50;
-            --light-text: #7f8c8d;
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --light-color: #f8fafc;
+            --dark-color: #0f172a;
+            --text-color: #334155;
+            --gray-light: #e2e8f0;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
         body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--dark-text);
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-color);
+            background-color: var(--light-color);
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: var(--transition);
         }
         
         .navbar-brand {
             font-weight: 700;
             color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .navbar-brand i {
+            font-size: 1.8rem;
+        }
+        
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            color: var(--dark-color);
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: var(--primary-color);
+            background: rgba(37, 99, 235, 0.1);
         }
         
         .hero-section {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
             color: white;
-            padding: 120px 0;
-        }
-        
-        .feature-card {
-            border: none;
-            border-radius: 10px;
+            padding: 120px 0 80px;
+            position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        .feature-card:hover {
-            transform: translateY(-10px);
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
         
-        .feature-icon {
-            font-size: 2.5rem;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
         }
         
         .btn-primary {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
+            background: var(--primary-color);
+            border: none;
+            padding: 12px 28px;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: var(--transition);
         }
         
         .btn-primary:hover {
-            background-color: #2980b9;
-            border-color: #2980b9;
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline-light {
+            border: 2px solid white;
+            color: white;
+            background: transparent;
+            padding: 10px 26px;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+        
+        .btn-outline-light:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section {
+            padding: 80px 0;
         }
         
         .section-title {
             position: relative;
             margin-bottom: 50px;
-            font-weight: 700;
-            color: var(--primary-color);
+            text-align: center;
         }
         
         .section-title:after {
             content: '';
             position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
             bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--secondary-color);
+            border-radius: 2px;
         }
         
-        .testimonial-card {
+        .section-subtitle {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+        
+        .card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            height: 100%;
             background: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        footer {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 50px 0 20px;
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
         }
         
-        .social-icon {
-            color: white;
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(37, 99, 235, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+        
+        .highlight {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid var(--primary-color);
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        .code-block {
+            background: #1e293b;
+            color: #f8fafc;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95rem;
+            overflow-x: auto;
+        }
+        
+        .code-comment {
+            color: #94a3b8;
+        }
+        
+        .code-tag {
+            color: #f87171;
+        }
+        
+        .code-attr {
+            color: #60a5fa;
+        }
+        
+        .code-value {
+            color: #34d399;
+        }
+        
+        .tech-card {
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+        
+        .tech-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .tech-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .tech-name {
             font-size: 1.5rem;
-            margin-right: 15px;
-            transition: color 0.3s ease;
+            margin-bottom: 15px;
         }
         
-        .social-icon:hover {
-            color: var(--secondary-color);
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 70px 0 0;
         }
         
-        /* Dark mode toggle */
-        .dark-mode {
-            background-color: #121212;
-            color: #f1f1f1;
+        .footer-title {
+            color: white;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
         }
         
-        .dark-mode .card {
-            background-color: #1e1e1e;
-            color: #f1f1f1;
+        .footer-title:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--primary-color);
+            bottom: -10px;
+            left: 0;
+            border-radius: 2px;
         }
         
-        /* Animation classes */
-        .fade-in {
-            animation: fadeIn 1s ease-in;
+        .footer-links a {
+            color: #cbd5e1;
+            display: block;
+            margin-bottom: 12px;
+            text-decoration: none;
+            transition: var(--transition);
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
         }
         
-        /* Responsive adjustments */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px 0;
+            margin-top: 50px;
+            text-align: center;
+            color: #94a3b8;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+        }
+        
+        .back-to-top:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        
         @media (max-width: 768px) {
-            .hero-section {
-                padding: 80px 0;
-                text-align: center;
+            .hero-title {
+                font-size: 2.5rem;
             }
             
-            .section-title:after {
-                bottom: -10px;
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 60px 0;
             }
         }
     </style>
 </head>
-
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <img src="favicon2.webp" alt="Logo" width="30" height="30" class="d-inline-block align-top me-2">
+                <i class="fas fa-laptop-code"></i>
                 STEVSITE PROGRAMMING
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -169,18 +406,13 @@
                         <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#services">Services</a>
+                        <a class="nav-link" href="#features">Features</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                        <a class="nav-link" href="#tech">Technologies</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                    <li class="nav-item ms-2">
-                        <button class="btn btn-sm btn-outline-secondary" onclick="toggleDarkMode()">
-                            <i class="fas fa-moon"></i>
-                        </button>
                     </li>
                 </ul>
             </div>
@@ -191,100 +423,143 @@
     <section class="hero-section" id="home">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h1 class="display-4 fw-bold mb-4">Welcome to Stevsite Programming</h1>
-                    <p class="lead mb-4">Learn modern web development with Bootstrap, JavaScript & HTML from industry experts.</p>
-                    <a href="#about" class="btn btn-primary btn-lg px-4 me-2">Get Started</a>
-                    <a href="#contact" class="btn btn-outline-light btn-lg px-4">Contact Us</a>
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title">Learn to Code with Professional Guidance</h1>
+                    <p class="hero-subtitle">Master Bootstrap, JavaScript, HTML and modern web development techniques with our comprehensive learning resources.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#about" class="btn btn-primary">Get Started</a>
+                        <a href="#tech" class="btn btn-outline-light">Explore Technologies</a>
+                    </div>
                 </div>
-                <div class="col-lg-6">
-                    <img src="coding-illustration.svg" alt="Coding Illustration" class="img-fluid d-none d-lg-block">
+                <div class="col-lg-6 text-center">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Coding" class="img-fluid rounded-3 shadow-lg">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="py-5" id="about">
-        <div class="container py-5">
-            <h2 class="text-center section-title">About Our Company</h2>
+    <section class="section bg-light" id="about">
+        <div class="container">
+            <h2 class="section-title">About Stevsite Programming</h2>
+            <p class="section-subtitle">We provide high-quality learning resources and web development services to help you succeed in the digital world.</p>
+            
             <div class="row">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <div id="aboutCarousel" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner rounded-3 overflow-hidden">
-                            <div class="carousel-item active">
-                                <img src="aquino1.jpg" class="d-block w-100" alt="Team 1">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="campny1.jpeg" class="d-block w-100" alt="Team 2">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="photo4.jpg" class="d-block w-100" alt="Office">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">Our Mission</h3>
+                            <p>My name is Steven Makarious. I am a software developer who develops and hosts websites. Welcome to my company, Stevsite Programming, where you can learn various programming languages. Keep exploring and learning on my website.</p>
+                            <p>We help various people design their websites and make them look great. Our mission is to:</p>
+                            <ul class="mb-4">
+                                <li>Explain experiences and different techniques about websites</li>
+                                <li>Teach how to create websites through different languages</li>
+                                <li>Show how to host websites and which applications to use</li>
+                            </ul>
+                            <div class="d-flex gap-3">
+                                <a href="#contact" class="btn btn-primary">Contact Us</a>
+                                <a href="#tech" class="btn btn-outline-primary">Learn More</a>
                             </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#aboutCarousel" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#aboutCarousel" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <h3 class="mb-4">Learning More from Stevsite Company</h3>
-                    <p>My name is Steven Makarious. I am a software developer who develops and hosts websites. Welcome to my company, Stevsite Programming, where you can learn various programming languages. Keep exploring and learning on my website. Welcome!</p>
-                    <p>There are several aspects that are included and explained on this website. Another thing is that we help various people design their websites and make them look great.</p>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Explanation about experiences and different techniques about websites.</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Teaching how to create websites through different languages.</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> How to host websites and which applications can be used for hosting.</li>
-                    </ul>
-                    <a href="#" class="btn btn-outline-primary mt-3">Learn More</a>
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 class="card-title">Why Choose Us</h3>
+                            <div class="d-flex align-items-start mb-4">
+                                <div class="feature-icon me-4">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div>
+                                    <h4>Expert Guidance</h4>
+                                    <p>Learn from experienced developers who are passionate about teaching and sharing knowledge.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start mb-4">
+                                <div class="feature-icon me-4">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div>
+                                    <h4>Hands-on Learning</h4>
+                                    <p>Practical projects and real-world examples to help you apply what you learn.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start">
+                                <div class="feature-icon me-4">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div>
+                                    <h4>Community Support</h4>
+                                    <p>Join our community of learners to share ideas and get help when you need it.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="py-5 bg-light" id="services">
-        <div class="container py-5">
-            <h2 class="text-center section-title">Our Services</h2>
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <div class="container">
+            <h2 class="section-title">Key Features</h2>
+            <p class="section-subtitle">Explore our comprehensive learning resources and development tools</p>
+            
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="card feature-card h-100">
-                        <div class="card-body text-center p-4">
-                            <div class="feature-icon">
-                                <i class="fas fa-laptop-code"></i>
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mx-auto">
+                                <i class="fas fa-box"></i>
                             </div>
-                            <h4 class="card-title">Web Development</h4>
-                            <p class="card-text">Custom website development using modern technologies like HTML5, CSS3, JavaScript, and Bootstrap.</p>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
+                            <h3 class="card-title">Install via Package Manager</h3>
+                            <p>Install Bootstrap's source Sass and JavaScript files via npm, RubyGems, Composer, or Meteor.</p>
+                            <div class="highlight">
+                                <code>npm install bootstrap@5.3.3</code>
+                            </div>
+                            <div class="highlight">
+                                <code>gem install bootstrap -v 5.3.3</code>
+                            </div>
+                            <a href="#" class="btn btn-outline-primary mt-2">Read Documentation</a>
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-md-4">
-                    <div class="card feature-card h-100">
-                        <div class="card-body text-center p-4">
-                            <div class="feature-icon">
-                                <i class="fas fa-mobile-alt"></i>
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mx-auto">
+                                <i class="fas fa-globe"></i>
                             </div>
-                            <h4 class="card-title">Responsive Design</h4>
-                            <p class="card-text">Creating websites that look great and function perfectly on all devices from desktop to mobile.</p>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
+                            <h3 class="card-title">Include via CDN</h3>
+                            <p>Quickly add Bootstrap to your project using our CDN links with no installation required.</p>
+                            <div class="code-block">
+                                <span class="code-tag">&lt;link</span> <span class="code-attr">href</span>=<span class="code-value">"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"</span> <span class="code-attr">rel</span>=<span class="code-value">"stylesheet"</span><span class="code-tag">&gt;</span><br>
+                                <span class="code-tag">&lt;script</span> <span class="code-attr">src</span>=<span class="code-value">"https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"</span><span class="code-tag">&gt;&lt;/script&gt;</span>
+                            </div>
+                            <a href="#" class="btn btn-outline-primary mt-2">Quick Start Guide</a>
                         </div>
                     </div>
                 </div>
+                
                 <div class="col-md-4">
-                    <div class="card feature-card h-100">
-                        <div class="card-body text-center p-4">
-                            <div class="feature-icon">
-                                <i class="fas fa-server"></i>
+                    <div class="card h-100">
+                        <div class="card-body text-center">
+                            <div class="feature-icon mx-auto">
+                                <i class="fas fa-file-code"></i>
                             </div>
-                            <h4 class="card-title">Web Hosting</h4>
-                            <p class="card-text">Reliable and secure web hosting solutions with 99.9% uptime and 24/7 support.</p>
-                            <a href="#" class="btn btn-sm btn-outline-primary">Learn More</a>
+                            <h3 class="card-title">CSS Variables</h3>
+                            <p>Build and extend in real-time with CSS variables for global theme styles and components.</p>
+                            <div class="code-block">
+                                <span class="code-comment">// Using CSS variables</span><br>
+                                <span class="code-tag">.component</span> {<br>
+                                &nbsp;&nbsp;<span class="code-attr">color</span>: <span class="code-tag">var</span>(--bs-gray-800);<br>
+                                &nbsp;&nbsp;<span class="code-attr">background-color</span>: <span class="code-tag">var</span>(--bs-gray-100);<br>
+                                }
+                            </div>
+                            <a href="#" class="btn btn-outline-primary mt-2">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -293,143 +568,51 @@
     </section>
 
     <!-- Technologies Section -->
-    <section class="py-5" id="technologies">
-        <div class="container py-5">
-            <h2 class="text-center section-title">Technologies We Use</h2>
+    <section class="section bg-light" id="tech">
+        <div class="container">
+            <h2 class="section-title">Technologies We Teach</h2>
+            <p class="section-subtitle">Master the essential web development technologies with our comprehensive resources</p>
+            
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="card h-100">
-                        <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20230310132605/Bootstrap-Tutorial.jpg" class="card-img-top" alt="Bootstrap">
-                        <div class="card-body">
-                            <h5 class="card-title">Bootstrap 5</h5>
-                            <p class="card-text">Bootstrap is a widely-used open-source front-end framework for web development, providing a collection of HTML, CSS, and JavaScript components.</p>
-                            <a href="https://getbootstrap.com/docs/4.0/getting-started/introduction/" class="btn btn-primary">Learn More</a>
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fab fa-bootstrap"></i>
                         </div>
+                        <h3 class="tech-name">Bootstrap 5</h3>
+                        <p>Powerful, extensible, and feature-packed frontend toolkit for building responsive websites.</p>
+                        <div class="highlight">
+                            <code>npm install bootstrap@5.3.3</code>
+                        </div>
+                        <a href="#" class="btn btn-primary mt-3">Learn Bootstrap</a>
                     </div>
                 </div>
+                
                 <div class="col-md-4">
-                    <div class="card h-100">
-                        <img src="https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190710102234/download3.png" class="card-img-top" alt="JavaScript">
-                        <div class="card-body">
-                            <h5 class="card-title">JavaScript</h5>
-                            <p class="card-text">JavaScript (JS) is a lightweight interpreted programming language with first-class functions, most well-known as the scripting language for Web pages.</p>
-                            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" class="btn btn-primary">Learn More</a>
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fab fa-js"></i>
                         </div>
+                        <h3 class="tech-name">JavaScript</h3>
+                        <p>High-level programming language that enables interactive web pages and applications.</p>
+                        <div class="highlight">
+                            <code>function greet() { console.log("Hello World!"); }</code>
+                        </div>
+                        <a href="#" class="btn btn-primary mt-3">Learn JavaScript</a>
                     </div>
                 </div>
+                
                 <div class="col-md-4">
-                    <div class="card h-100">
-                        <img src="html-favicon.jpg" class="card-img-top" alt="HTML">
-                        <div class="card-body">
-                            <h5 class="card-title">HTML5</h5>
-                            <p class="card-text">HTML stands for Hyper Text Markup Language, the standard markup language for creating Web pages that describes the structure of a Web page.</p>
-                            <a href="https://html.com/" class="btn btn-primary">Learn More</a>
+                    <div class="tech-card">
+                        <div class="tech-icon">
+                            <i class="fab fa-html5"></i>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Installation Section -->
-    <section class="py-5 bg-light">
-        <div class="container py-5">
-            <div class="row g-4">
-                <div class="col-lg-6">
-                    <div class="p-4 bg-white rounded-3 shadow-sm">
-                        <i class="fas fa-box-open fs-1 mb-3 text-primary"></i>
-                        <h3>Install via package manager</h3>
-                        <p>Install Bootstrap's source Sass and JavaScript files via npm, RubyGems, Composer, or Meteor. Package managed installs don't include documentation or our full build scripts.</p>
-                        <div class="bg-dark text-light p-3 rounded mb-3">
-                            <code class="text-light">npm install bootstrap@5.3.3</code>
+                        <h3 class="tech-name">HTML5</h3>
+                        <p>The standard markup language for documents designed to be displayed in a web browser.</p>
+                        <div class="highlight">
+                            <code>&lt;h1&gt;Hello World!&lt;/h1&gt;</code>
                         </div>
-                        <div class="bg-dark text-light p-3 rounded">
-                            <code class="text-light">gem install bootstrap -v 5.3.3</code>
-                        </div>
-                        <a href="#" class="btn btn-link mt-3 ps-0">Read installation docs</a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="p-4 bg-white rounded-3 shadow-sm">
-                        <i class="fas fa-globe fs-1 mb-3 text-primary"></i>
-                        <h3>Include via CDN</h3>
-                        <p>When you only need to include Bootstrap's compiled CSS or JS, you can use jsDelivr. See it in action with our simple quick start, or browse the examples to jumpstart your next project.</p>
-                        <div class="bg-dark text-light p-3 rounded mb-3">
-                            <code class="text-light">
-                                &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
-                            </code>
-                        </div>
-                        <div class="bg-dark text-light p-3 rounded">
-                            <code class="text-light">
-                                &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
-                            </code>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="py-5">
-        <div class="container py-5">
-            <h2 class="text-center section-title">What Our Students Say</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="testimonial-card h-100">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Student" class="rounded-circle me-3" width="60">
-                            <div>
-                                <h5 class="mb-0">Sarah Johnson</h5>
-                                <small class="text-muted">Web Developer</small>
-                            </div>
-                        </div>
-                        <p>"The Bootstrap course was incredibly comprehensive and easy to follow. I was able to build responsive websites in no time!"</p>
-                        <div class="text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="testimonial-card h-100">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Student" class="rounded-circle me-3" width="60">
-                            <div>
-                                <h5 class="mb-0">Michael Chen</h5>
-                                <small class="text-muted">Frontend Engineer</small>
-                            </div>
-                        </div>
-                        <p>"The JavaScript tutorials helped me understand complex concepts through practical examples. Highly recommended!"</p>
-                        <div class="text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="testimonial-card h-100">
-                        <div class="d-flex align-items-center mb-3">
-                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Student" class="rounded-circle me-3" width="60">
-                            <div>
-                                <h5 class="mb-0">Emily Rodriguez</h5>
-                                <small class="text-muted">UI Designer</small>
-                            </div>
-                        </div>
-                        <p>"As a designer, learning HTML and CSS through Stevsite's courses helped me communicate better with developers."</p>
-                        <div class="text-warning">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
+                        <a href="#" class="btn btn-primary mt-3">Learn HTML5</a>
                     </div>
                 </div>
             </div>
@@ -437,26 +620,28 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="py-5 bg-light" id="contact">
-        <div class="container py-5">
-            <h2 class="text-center section-title">Contact Us</h2>
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">Have questions? Reach out to us for more information</p>
+            
             <div class="row">
-                <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="col-lg-6 mb-5 mb-lg-0">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h4 class="card-title mb-4">Get in Touch</h4>
+                            <h3 class="card-title">Get in Touch</h3>
                             <form>
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" id="name" required>
+                                    <input type="text" class="form-control" id="name" placeholder="Your Name">
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
-                                    <input type="email" class="form-control" id="email" required>
+                                    <input type="email" class="form-control" id="email" placeholder="Your Email">
                                 </div>
                                 <div class="mb-3">
                                     <label for="message" class="form-label">Message</label>
-                                    <textarea class="form-control" id="message" rows="4" required></textarea>
+                                    <textarea class="form-control" id="message" rows="4" placeholder="Your Message"></textarea>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Send Message</button>
                             </form>
@@ -466,28 +651,23 @@
                 <div class="col-lg-6">
                     <div class="card h-100">
                         <div class="card-body">
-                            <h4 class="card-title mb-4">Our Information</h4>
+                            <h3 class="card-title">Contact Information</h3>
                             <ul class="list-unstyled">
                                 <li class="mb-3">
-                                    <i class="fas fa-map-marker-alt me-2 text-primary"></i>
-                                    <span>P.O Box 520 Mtwara, Tanzania</span>
+                                    <h5><i class="fas fa-user me-2"></i> Steven Ladislaus Makarious</h5>
                                 </li>
                                 <li class="mb-3">
-                                    <i class="fas fa-phone me-2 text-primary"></i>
-                                    <span>+255 715 296 092</span>
+                                    <h5><i class="fas fa-map-marker-alt me-2"></i> P.O Box 520, Mtwara, Tanzania</h5>
                                 </li>
                                 <li class="mb-3">
-                                    <i class="fas fa-envelope me-2 text-primary"></i>
-                                    <span>stevenabalwambo@gmail.com</span>
+                                    <h5><i class="fas fa-phone me-2"></i> +255 715 296 092</h5>
                                 </li>
                                 <li class="mb-3">
-                                    <i class="fas fa-clock me-2 text-primary"></i>
-                                    <span>Monday - Friday: 9:00 AM - 5:00 PM</span>
+                                    <h5><i class="fas fa-envelope me-2"></i> stevenabalwambo@gmail.com</h5>
                                 </li>
                             </ul>
                             <div class="mt-4">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d687.0022297312414!2d40.174775692539306!3d-10.28235222177917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x188d4533a7ebbc81%3A0x8748bb1bfa05214f!2sLigula%20Hospital!5e1!3m2!1sen!2stz!4v1722445508456!5m2!1sen!2stz" 
-                                width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d687.0022297312414!2d40.174775692539306!3d-10.28235222177917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x188d4533a7ebbc81%3A0x8748bb1bfa05214f!2sLigula%20Hospital!5e1!3m2!1sen!2stz!4v1722445508456!5m2!1sen!2stz" width="100%" height="250" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
                             </div>
                         </div>
                     </div>
@@ -497,125 +677,101 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-5">
+    <footer class="footer">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4 mb-lg-0">
-                    <h5 class="text-white mb-4">STEVSITE PROGRAMMING</h5>
-                    <p>Providing quality programming education and web development services since 2020.</p>
-                    <div class="mt-4">
-                        <a href="#" class="social-icon me-3"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon me-3"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon me-3"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon me-3"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+            <div class="row g-5">
+                <div class="col-lg-4">
+                    <h3 class="footer-title">Stevsite Programming</h3>
+                    <p>Providing high-quality web development resources and training since 2023. Helping developers around the world build better websites.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-white mb-4">Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Home</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">About</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Services</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Portfolio</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">Contact</a></li>
-                    </ul>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="#home">Home</a>
+                        <a href="#about">About Us</a>
+                        <a href="#features">Features</a>
+                        <a href="#tech">Technologies</a>
+                        <a href="#contact">Contact</a>
+                    </div>
                 </div>
-                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-                    <h5 class="text-white mb-4">Services</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Web Design</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Web Development</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Hosting</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Maintenance</a></li>
-                        <li><a href="#" class="text-white text-decoration-none">SEO</a></li>
-                    </ul>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h3 class="footer-title">Technologies</h3>
+                    <div class="footer-links">
+                        <a href="#">Bootstrap 5</a>
+                        <a href="#">JavaScript</a>
+                        <a href="#">HTML5 & CSS3</a>
+                        <a href="#">React.js</a>
+                        <a href="#">Node.js</a>
+                    </div>
                 </div>
-                <div class="col-lg-4">
-                    <h5 class="text-white mb-4">Newsletter</h5>
-                    <p>Subscribe to our newsletter for the latest updates and offers.</p>
-                    <form class="mt-3">
-                        <div class="input-group">
-                            <input type="email" class="form-control" placeholder="Your Email" required>
+                
+                <div class="col-lg-3">
+                    <h3 class="footer-title">Newsletter</h3>
+                    <p>Subscribe to our newsletter for the latest updates and resources.</p>
+                    <form>
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Your Email">
                             <button class="btn btn-primary" type="submit">Subscribe</button>
                         </div>
                     </form>
                 </div>
             </div>
-            <hr class="my-4 bg-light">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="small mb-0">&copy; 2023 Stevsite Programming. All rights reserved.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <p class="small mb-0">Designed with <i class="fas fa-heart text-danger"></i> by Steven Makarious</p>
-                </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Stevsite Programming. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <a href="#" class="btn btn-primary btn-lg back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></a>
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    
     <script>
         // Back to top button
-        window.addEventListener('scroll', function() {
-            var backToTop = document.getElementById('backToTop');
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
-                backToTop.style.display = 'block';
+                backToTopButton.classList.add('show');
             } else {
-                backToTop.style.display = 'none';
+                backToTopButton.classList.remove('show');
             }
         });
-        
-        document.getElementById('backToTop').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        });
-        
-        // Dark mode toggle
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-            
-            // Save preference to localStorage
-            if (document.body.classList.contains('dark-mode')) {
-                localStorage.setItem('darkMode', 'enabled');
-            } else {
-                localStorage.setItem('darkMode', 'disabled');
-            }
-        }
-        
-        // Check for saved dark mode preference
-        if (localStorage.getItem('darkMode') === 'enabled') {
-            document.body.classList.add('dark-mode');
-        }
         
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
         
-        // Animation on scroll
-        window.addEventListener('scroll', function() {
-            const elements = document.querySelectorAll('.fade-in');
-            
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.3;
-                
-                if (elementPosition < screenPosition) {
-                    element.style.opacity = '1';
-                }
-            });
+        // Navbar background change on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
         });
     </script>
 </body>
